@@ -2,10 +2,16 @@
   <div class="container mx-auto py-8">
     <div class="flex justify-center">
       <!-- Home Tab -->
-      <router-link :to="{ name: 'todo' }" class="tab" :class="{ 'active': $route.name === 'todo' }">Home</router-link>
+      <router-link :to="{ name: 'home' }" class="tab" :class="{ 'active': $route.name === 'home' }">Home</router-link>
+
+      <!-- Todo Tab -->
+      <router-link :to="{ name: 'todo' }" class="tab" :class="{ 'active': $route.name === 'todo' }">Todo</router-link>
 
       <!-- About Tab -->
       <router-link :to="{ name: 'about' }" class="tab" :class="{ 'active': $route.name === 'about' }">About</router-link>
+
+      <!-- Practices Tab -->
+      <router-link :to="{ name: 'practice' }" class="tab" :class="{ 'active': $route.name === 'practice' }">Practice</router-link>
     </div>
 
     <!-- Router View for rendering components -->
