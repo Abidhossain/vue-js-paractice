@@ -56,6 +56,7 @@ const setFirstName = computed({
     <form class="" @submit.prevent="addProduct">
       <div class="flex items-center border-b-2 border-teal-500 py-2">
         <select class="border-none focus:outline-none w-full" v-model="form.category">
+          <option value="">Choose One</option>
           <option v-for="(category, index) in categories" :key="index">{{ category }}</option>
         </select>
       </div>
