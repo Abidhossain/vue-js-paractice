@@ -1,51 +1,11 @@
-<script setup>
-import {ref, computed} from 'vue'
-
-let firstName = ref('')
-let lastName = ref('')
-
-const fullName = computed(() => {
-
-  let fullName = `${firstName.value} ${lastName.value}`
-
-  return fullName;
-
-})
-
-const setFirstName = computed({
-  get: () => firstName.value.toUpperCase(),
-  set: value => {
-    firstName.value = value.toUpperCase()
-  }
-})
-
-const products = ref([
-  {name: 'Mango', category: 'fruit'},
-  {name: 'Banana', category: 'fruit'},
-  {name: 'Earbuds', category: 'gadgets'},
-  {name: 'Keyboard', category: 'gadgets'},
-])
-
-const selectedCategory = ref('fruit')
-
-const filteredProducts = computed(() => {
-    return products.value.filter((product) => product.category === selectedCategory.value)
-})
-
-</script>
-
 <template>
+      <div class="max-w-md bg-white shadow-lg rounded-lg overflow-hidden mt-16 border p-6">
+        <h1 class="text-2xl uppercase font-bold text-gray-700">To Do List</h1>
 
-  <ul>
-    <li v-for="product in filteredProducts">{{ product.name }} / {{ product.category }}</li>
-  </ul>
-  <!--  <input type="text" v-model="setFirstName">-->
-  <!--  <input type="text" v-model="lastName">-->
-
-  <!--  {{ setFirstName }} -> {{ firstName}}-->
-
-    <h1 class="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-
+        <form action="">
+          <div class="flex items-center border-b-2  border-teal-500 py-2">
+            <input class="border-none focus:outline-none w-full text-gray-700" type="text" placeholder="Add a task">
+          </div>
+        </form>
+      </div>
 </template>
