@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto py-8">
-    <div class="flex justify-center">
+    <div class="flex justify-center" v-if="isLoggedIn">
       <!-- Home Tab -->
       <router-link :to="{ name: 'home' }" class="tab" :class="{ 'active': $route.name === 'home' }">Home</router-link>
 
@@ -12,12 +12,33 @@
 
       <!-- Practices Tab -->
       <router-link :to="{ name: 'practice' }" class="tab" :class="{ 'active': $route.name === 'practice' }">Practice</router-link>
+
+      <!-- Logout Button -->
+      <button @click="logout" class="tab">Logout</button>
+
     </div>
 
     <!-- Router View for rendering components -->
     <router-view/>
   </div>
-</template>
+</template> 
+<script setup>
+import { computed, onMounted } from 'vue';
+import router from './router/router';
+
+const isLoggedIn = computed(() => {
+  const token = localStorage.getItem('token');
+  console.log("Token retrieved:", token);
+  return token !== null;
+}); 
+ const logout = () => {
+      // Clear token from local storage
+      localStorage.removeItem('token');
+      // Redirect to login page
+      router.push({name : 'login' });
+    }
+
+</script>
 
 <style scoped>
 .tab {
